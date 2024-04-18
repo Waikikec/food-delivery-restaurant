@@ -4,7 +4,7 @@ import CartIcon from "./CartIcon";
 import Menu from "./Menu";
 
 const Navbar = () => {
-  const user = false;
+  const user = true;
 
   return (
     <div className="h-12 text-red-500 p-4 flex items-center justify-between border-b-2 border-b-red-500 uppercase lg:px-20 xl:px-40">
@@ -37,7 +37,7 @@ const Navbar = () => {
         {
           !user
             ? <Link href={"/"}>Login</Link>
-            : <Link href={"/menu"}>Orders</Link>
+            : <Link href={"/orders"}>Orders</Link>
         }
 
         <CartIcon />

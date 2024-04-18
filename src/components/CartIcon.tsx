@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const CartIcon = () => {
   return (
@@ -6,7 +7,7 @@ const CartIcon = () => {
       <div className="relative w-8 h-8 md:w-5 md:h-5">
         <Image src={"/cart.png"} alt={""} fill sizes="100%" />
       </div>
-      <span>Cart (3)</span>
+      <Link href={'/cart'}>Cart (3)</Link>
     </>
   )
 }

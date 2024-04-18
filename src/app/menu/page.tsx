@@ -22,7 +22,7 @@ const MenuPage = () => {
               {item.desc}
             </p>
 
-            <button className={`bg-${item.color} text-${item.color === "black" ? "white" : "red-500"} py-2 px-4 rounded-md`}>
+            <button className={`text-${item.color === "black" ? "white" : "red-500"} py-2 px-4 rounded-md bg-${item.color}`}>
               Explore
             </button>
 
