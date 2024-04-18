@@ -1,3 +1,4 @@
+import { ProductType } from "@/types.ts/types";
 import Image from "next/image";
 
 const Featured = () => {
@@ -47,7 +48,7 @@ const Featured = () => {
 
 export default Featured
 
-const featuredProducts = [
+const featuredProducts: ProductType[] = [
   {
     id: 1,
     title: "Sicilian",
