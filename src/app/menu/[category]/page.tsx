@@ -2,10 +2,29 @@ import { ProductType } from "@/types.ts/types";
 import Image from "next/image";
 import Link from "next/link";
 
-const CategoryPage = () => {
+const getData = async (category: string) => {
+  const res = await fetch(`http://localhost:3000/api/products?cat=${category}`, {
+    cache: "no-store"
+  });
+
+  if (!res.ok) throw new Error("Failed to fetch products for category!");
+
+  return res.json();
+}
+
+interface CategoryPageProps {
+  params: {
+    category: string
+  }
+}
+
+const CategoryPage = async ({ params }: CategoryPageProps) => {
+
+  const productsPerCategory: ProductType[] = await getData(params.category);
+
   return (
     <div className="flex flex-wrap text-red-500">
-      {pizzas.map((item) => (
+      {productsPerCategory.map((item) => (
         <Link
           key={item.id}
           href={`/product/${item.id}`}

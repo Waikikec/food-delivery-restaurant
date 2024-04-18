@@ -1,7 +1,19 @@
 import { MenuType } from "@/types.ts/types";
 import Link from "next/link";
 
-const MenuPage = () => {
+const getData = async () => {
+  const res = await fetch("http://localhost:3000/api/categories", {
+    cache: 'no-store'
+  });
+
+  if (!res.ok) throw new Error("Failed to fetch categories!");
+
+  return res.json();
+}
+
+const MenuPage = async () => {
+
+  const menu: MenuType[] = await getData();
 
   return (
     <div className="p-4 lg:px-20 xl:px-40 h-[calc(100vh-6rem)] md:h-[calc(100vh-12rem)] flex flex-col md:flex-row items-center">
@@ -22,7 +34,7 @@ const MenuPage = () => {
               {item.desc}
             </p>
 
-            <button className={`text-${item.color === "black" ? "white" : "red-500"} py-2 px-4 rounded-md bg-${item.color}`}>
+            <button className={`bg-${item.color} text-${item.color === "black" ? "white" : "red-500"} py-2 px-4 rounded-md`}>
               Explore
             </button>
 
@@ -34,30 +46,3 @@ const MenuPage = () => {
 }
 
 export default MenuPage
-
-const menu: MenuType[] = [
-  {
-    id: 1,
-    slug: "pastas",
-    title: "Italian Pastas",
-    desc: "Savor the taste of perfection with our exquisite Italian handmade pasta menu.",
-    img: "/temporary/m1.png",
-    color: "white",
-  },
-  {
-    id: 2,
-    slug: "burgers",
-    title: "Juicy Burgers",
-    desc: "Burger Bliss: Juicy patties, bold flavors, and gourmet toppings galore.",
-    img: "/temporary/m2.png",
-    color: "black",
-  },
-  {
-    id: 3,
-    slug: "pizzas",
-    title: "Cheesy Pizzas",
-    desc: "Pizza Paradise: Irresistible slices, mouthwatering toppings, and cheesy perfection.",
-    img: "/temporary/m3.png",
-    color: "white",
-  },
-];
