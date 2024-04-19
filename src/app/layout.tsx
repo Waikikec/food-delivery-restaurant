@@ -2,6 +2,7 @@ import AuthProvider from "@/components/AuthProvider";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Notification from "@/components/Notification";
+import QueryProvider from "@/components/QueryProvider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -22,12 +23,14 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <AuthProvider>
-          <div>
-            <Notification />
-            <Navbar />
-            {children}
-            <Footer />
-          </div>
+          <QueryProvider>
+            <div>
+              <Notification />
+              <Navbar />
+              {children}
+              <Footer />
+            </div>
+          </QueryProvider>
         </AuthProvider>
       </body>
     </html>
