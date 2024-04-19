@@ -1,4 +1,4 @@
-import { MenuType } from "@/types.ts/types";
+import { MenuType } from "@/types/types";
 import Link from "next/link";
 
 const getData = async () => {

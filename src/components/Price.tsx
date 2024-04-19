@@ -1,5 +1,5 @@
 "use client";
-import { ProductOptionType } from "@/types.ts/types";
+import { ProductOptionType } from "@/types/types";
 import { useEffect, useState } from "react";
 
 interface PriceProps {

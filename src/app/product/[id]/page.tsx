@@ -1,5 +1,5 @@
 import Price from "@/components/Price";
-import { ProductType } from "@/types.ts/types";
+import { ProductType } from "@/types/types";
 import Image from "next/image";
 
 const SingleProductPage = () => {

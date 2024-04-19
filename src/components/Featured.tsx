@@ -1,4 +1,4 @@
-import { ProductType } from "@/types.ts/types";
+import { ProductType } from "@/types/types";
 import Image from "next/image";
 
 const getData = async () => {

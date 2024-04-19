@@ -10,9 +10,6 @@ const LoginPage = () => {
 
   const router = useRouter();
 
-  console.log("🚀 ~ LoginPage ~ data:", data)
-  console.log("🚀 ~ LoginPage ~ status:", status)
-
   if (status === 'loading') return <p>Loading...</p>;
 
   if (status === 'authenticated') return router.push('/');
