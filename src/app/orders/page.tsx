@@ -5,6 +5,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const OrdersPage = () => {
 
@@ -49,6 +50,7 @@ const OrdersPage = () => {
     const status = input.value;
 
     mutation.mutate({ id, status });
+    toast.success("The order status has been changed!");
   }
 
   return (
@@ -66,7 +68,7 @@ const OrdersPage = () => {
         </thead>
         <tbody>
           {data.map((order: OrderType) => (
-            <tr key={order.id} className="text-sm md:text-base bg-red-50">
+            <tr key={order.id} className={`${order.status !== "delivered" && "bg-red-50 "} text-sm md:text-base`}>
               <td className="hidden md:block py-6 px-1">{order.id}</td>
               <td className="py-6 px-1">{order.createdAt.toString().slice(0, 10)}</td>
               <td className="py-6 px-1">{order.price}</td>
