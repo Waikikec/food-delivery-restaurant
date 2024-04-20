@@ -15,10 +15,7 @@ export const GET = async (req: NextRequest) => {
       },
     });
 
-    return new NextResponse(
-      JSON.stringify(products),
-      { status: 200 }
-    );
+    return new NextResponse(JSON.stringify(products), { status: 200 });
 
   } catch (err) {
 

@@ -1,29 +1,32 @@
 "use client";
-import { ProductOptionType } from "@/types/types";
+import { ProductType } from "@/types/types";
 import { useEffect, useState } from "react";
 
 interface PriceProps {
-  id: number;
-  price: number;
-  options?: ProductOptionType[]
+  product: ProductType;
 }
 
-const Price = ({ id, price, options }: PriceProps) => {
+const Price = ({ product }: PriceProps) => {
+
+  const { id, price, title, desc, img, options } = product;
+
   const [totalPrice, setTotalPrice] = useState<number>(price);
   const [quantity, setQuantity] = useState<number>(1);
   const [selectedOption, setSelectedOption] = useState<number>(0);
 
   useEffect(() => {
-    setTotalPrice(quantity * (options ? price + options[selectedOption].additionalPrice : price));
-  }, [quantity, selectedOption, options, price])
+    if (product.options?.length) {
+      setTotalPrice(quantity * price + product.options[selectedOption].additionalPrice)
+    }
+  }, [price, product.options, quantity, selectedOption])
 
   return (
     <div className="flex flex-col gap-4">
-      <h2 className="text-2xl font-bold">${totalPrice.toFixed(2)}</h2>
+      <h2 className="text-2xl font-bold">${totalPrice}</h2>
 
       {/* OPTIONS CONTAINER */}
       <div className="flex gap-4">
-        {options?.map((option, index) => (
+        {options?.length && options?.map((option, index) => (
           <button
             key={option.title}
             className="min-w-[6rem] p-2 ring-1 ring-red-500 rounded-md"
@@ -44,11 +47,11 @@ const Price = ({ id, price, options }: PriceProps) => {
         <div className="flex justify-between w-full p-3 ring-1 ring-red-500">
           <span>Quantity:</span>
           <div className="flex gap-4 items-center">
-            <button onClick={() => setQuantity(prev => (prev > 1 ? prev - 1 : 1))}            >
+            <button onClick={() => setQuantity(prev => (prev > 1 ? prev - 1 : 1))}>
               {'<'}
             </button>
             <span>{quantity}</span>
-            <button onClick={() => setQuantity(prev => (prev < 9 ? prev + 1 : 9))}            >
+            <button onClick={() => setQuantity(prev => (prev < 9 ? prev + 1 : 9))}>
               {'>'}
             </button>
           </div>

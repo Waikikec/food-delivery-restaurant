@@ -4,7 +4,7 @@ export type ProductOptionType = {
 }
 
 export type ProductType = {
-  id: number;
+  id: string;
   title: string;
   desc?: string;
   img?: string;
