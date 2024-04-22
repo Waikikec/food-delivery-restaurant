@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Food Restaurant FullStack Application
 
-## Getting Started
 
-First, run the development server:
+# Contents
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- [Screenshots](#Screenshots)
+- [Quick Start](#quick-start)
+  - [Configure](#configure)
+  - [Run](#run)
+- [NPM Scripts (package.json)](#npm-scripts-package.json)
+- [Development Tools](#development-tools)
+- [License](#license)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Screenshots
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+# Quick Start
 
-## Learn More
+## `Basic configuration`
 
-To learn more about Next.js, take a look at the following resources:
+1. Install [Node.js](https://nodejs.org/en/)
+2. Install server and client packages:
+   ```
+   npm install
+   ```
+3. Follow .env.example for client and server side and create your own
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. Type the following in the command prompt:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+   ```
+   npm run dev
+   ```
 
-## Deploy on Vercel
+# Development Tools
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+  * ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
+  * ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+  * ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+  * ![Stripe](https://img.shields.io/badge/STRIPE-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+  * ![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
+  * ![Zustand](https://img.shields.io/badge/zustand-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+  * ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+  * ![Auth.JS](https://img.shields.io/badge/AUTH.JS-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# License
+
+This project is licensed under the `MIT open source license`.
