@@ -34,7 +34,7 @@ const MenuPage = async () => {
               {item.desc}
             </p>
 
-            <button className={`bg-${item.color} text-${item.color === "black" ? "white" : "red-500"} py-2 px-4 rounded-md`}>
+            <button className={`bg-gray-200 text-black py-2 px-4 rounded-md`}>
               Explore
             </button>
 
