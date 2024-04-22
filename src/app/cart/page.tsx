@@ -58,7 +58,7 @@ const CartPage = () => {
               <Image
                 width={100}
                 height={100}
-                src={"/temporary/p1.png"}
+                src={product.img}
                 alt={""}
               />
             }

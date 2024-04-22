@@ -37,10 +37,11 @@ const Price = ({ product }: PriceProps) => {
   }, [])
 
   useEffect(() => {
-    if (product.options?.length) {
-      setTotalPrice(quantity * price + product.options[selectedOption].additionalPrice)
+    if (options && options.length) {
+      const currentPrice = (quantity * price) + options[selectedOption].additionalPrice;
+      setTotalPrice(currentPrice);
     }
-  }, [price, product.options, quantity, selectedOption])
+  }, [options, price, quantity, selectedOption])
 
 
   return (

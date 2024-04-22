@@ -9,7 +9,7 @@ type Inputs = {
   title: string;
   desc: string;
   price: number;
-  catSlug: string;
+  categorySlug: string;
 };
 
 type Option = {
@@ -26,7 +26,7 @@ const AddPage = () => {
     title: "",
     desc: "",
     price: 0,
-    catSlug: "",
+    categorySlug: "",
   });
 
   const [option, setOption] = useState<Option>({
@@ -50,18 +50,30 @@ const AddPage = () => {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
+    e.preventDefault();
+
     setInputs((prev) => {
       return { ...prev, [e.target.name]: e.target.value };
     });
   };
 
   const changeOption = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+
+    let currentTargetName = e.target.name;
+    let currentTargetValue = currentTargetName === 'title' ? e.target.value : parseInt(e.target.value);
+
     setOption((prev) => {
-      return { ...prev, [e.target.name]: e.target.value };
+      return {
+        ...prev,
+        [currentTargetName]: currentTargetValue
+      };
     });
   };
 
   const handleChangeImg = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+
     const target = e.target as HTMLInputElement;
     const item = (target.files as FileList)[0];
     setFile(item);
@@ -69,18 +81,19 @@ const AddPage = () => {
 
   const upload = async () => {
     const data = new FormData();
+
     data.append("file", file!);
     data.append("upload_preset", "restaurant");
 
-    const res = await fetch("https://api.cloudinary.com/v1_1/demmbehat/image", {
+    const res = await fetch("https://api.cloudinary.com/v1_1/demmbehat/image/upload", {
       method: "POST",
-      headers: { "Content-Type": "multipart/form-data" },
+      mode: "cors",
       body: data,
     });
-
     const resData = await res.json();
     return resData.url;
   };
+
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -106,7 +119,7 @@ const AddPage = () => {
 
   return (
     <div className="p-4 lg:px-20 xl:px-40 h-[calc(100vh-6rem)] md:h-[calc(100vh-9rem)] flex items-center justify-center text-red-500">
-      <form onSubmit={handleSubmit} className="flex flex-wrap gap-6">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-6">
         <h1 className="text-4xl mb-2 text-gray-300 font-bold">
           Add New Product
         </h1>
@@ -161,7 +174,7 @@ const AddPage = () => {
             className="ring-1 ring-red-200 p-4 rounded-sm placeholder:text-red-200 outline-none"
             type="text"
             placeholder="pizzas"
-            name="catSlug"
+            name="categorySlug"
             onChange={handleChange}
           />
         </div>
@@ -184,7 +197,7 @@ const AddPage = () => {
             />
             <button
               className="bg-gray-500 p-2 text-white"
-              onClick={() => setOptions((prev) => [...prev, option])}
+              onClick={(e) => { e.preventDefault(), setOptions((prev) => [...prev, option]) }}
             >
               Add Option
             </button>
