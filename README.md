@@ -25,12 +25,11 @@ Welcome to our full stack application tailored for food enthusiasts and restaura
 
 ## `Basic configuration`
 
-1. Install [Node.js](https://nodejs.org/en/)
-2. Install server and client packages:
+1. Install server and client packages:
    ```
    npm install
    ```
-3. Follow .env.example for client and server side and create your own
+2. Follow .env.example and create your own
 
 4. Type the following in the command prompt:
 
