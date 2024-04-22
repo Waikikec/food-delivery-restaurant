@@ -22,9 +22,32 @@ export const GET = async (req: NextRequest) => {
     console.log(err);
 
     return new NextResponse(
-      JSON.stringify({ message: 'Fetching categories failed!' }),
+      JSON.stringify({ message: 'Fetching products failed!' }),
       { status: 500 }
     )
 
+  }
+};
+
+// CREATE PRODUCT
+export const POST = async (req: NextRequest) => {
+
+  try {
+    const body = await req.json();
+
+    const products = await prisma.product.create({
+      data: body,
+    });
+
+    return new NextResponse(JSON.stringify(products), { status: 201 });
+
+  } catch (err) {
+
+    console.log(err);
+
+    return new NextResponse(
+      JSON.stringify({ message: 'Failed to create a product!' }),
+      { status: 500 }
+    )
   }
 };
